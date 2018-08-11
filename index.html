@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Draft Order App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Draft Order App</h1>
+
+        <h3>Enter League Members</h3>
+        <input type="text" id="leagueMember">
+        <input type='button' onclick='addMember()' value='Add to Draft'/>
+
+        <ol id="draftList">
+            <li>Kerry</li>
+            <li>Zach</li>
+            <li>Eric</li>
+            <li>Bova</li>
+            <li>Leeds</li>
+            <li>Tim</li>
+            <li>Jon</li>
+            <li>Meg</li>
+            <li>Bre</li>
+            <li>Denis</li>
+        </ol>
+
+        <!-- <input type='button' onclick='randomizeOrder()' value='Randomize'/> -->
+        <!-- <input type='button' id="assign" onclick='assignGolfer()' value='Assign Golfer'/> -->
+        <input type='button' id="assign" onclick='assignGolfer()' value='Assign Golfer'/>
+        
+        <script src="scripts.js" async defer></script>
+    </body>
+</html>
