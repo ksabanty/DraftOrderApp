@@ -13,11 +13,11 @@
     <body>
         <h1>Draft Order App</h1>
 
-        <h3>Enter League Members</h3>
-        <input type="text" id="leagueMember">
-        <input type='button' onclick='addMember()' value='Add to Draft'/>
+        <!-- <h3>Enter League Members</h3> -->
+        <!-- <input type="text" id="leagueMember"> -->
+        <!-- <input type='button' onclick='addMember()' value='Add to Draft'/> -->
 
-        <ol id="draftList">
+        <!-- <ol id="draftList">
             <li>Kerry</li>
             <li>Zach</li>
             <li>Eric</li>
@@ -28,11 +28,83 @@
             <li>Meg</li>
             <li>Bre</li>
             <li>Denis</li>
-        </ol>
+        </ol> -->
+
+        <table>
+            <thead>
+                <tr>
+                    <th onclick="sort_table(people, 0, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;">League Member</th>
+                    <th onclick="sort_table(people, 1, asc2); asc2 *= -1; asc3 = 1; asc1 = 1;">Golfer</th>
+                    <th onclick="sort_table(people, 2, asc3); asc3 *= -1; asc1 = 1; asc2 = 1;">Score</th>
+                </tr>
+            </thead>
+            <tbody id="people">
+            <tr>
+                <td>Kerry</td>
+                <td id="lName">Stone</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            <tr>
+                <td>Zach</td>
+                <td id="lName">Simpson</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            <tr>
+                <td>Eric</td>
+                <td id="lName">Berger</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            <tr>
+                <td>Bova</td>
+                <td id="lName">Suri</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            <tr>
+                <td>Leeds</td>
+                <td id="lName">Wallace</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            <tr>
+                <td>Tim</td>
+                <td id="lName">Na</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            <tr>
+                <td>Jon</td>
+                <td id="lName">Koepka</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            <tr>
+                <td>Meg</td>
+                <td id="lName">Lowry</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            <tr>
+                <td>Bre</td>
+                <td id="lName">Woodland</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            <tr>
+                <td>Denis</td>
+                <td id="lName">Hatton</td>
+                <!-- <td id="position"></td> -->
+                <td id="score"></td>
+            </tr>
+            </tbody>
+        </table>
 
         <!-- <input type='button' onclick='randomizeOrder()' value='Randomize'/> -->
         <!-- <input type='button' id="assign" onclick='assignGolfer()' value='Assign Golfer'/> -->
-        <input type='button' id="assign" onclick='assignGolfer()' value='Assign Golfer'/>
+        <!-- <input type='button' id="assign" onclick='assignGolfer()' value='Assign Golfer'/> -->
         
         <script src="scripts.js" async defer></script>
     </body>

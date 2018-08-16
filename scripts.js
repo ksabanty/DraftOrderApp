@@ -47,3 +47,59 @@ function randomizeOrder() {
         ol.appendChild(ol.children[Math.random() * i | 0]);
     }
 }
+
+var golfers = [35225, 29221, 40026, 45478, 48887, 25396, 36689, 33204, 31323, 34363];
+
+var people, asc1 = 1, asc2 = 1, asc3 = 1;
+
+window.onload = function() {
+    getScores(golfers);
+    people = document.getElementById("people");
+};
+
+function getScores(playerIds) {
+    var url = "https://statdata.pgatour.com/r/033/leaderboard-v2mini.json";
+    var scoreDisp = document.querySelectorAll("#score");
+    var pageGolfers = document.querySelectorAll("#lName");
+    var ranking = document.querySelectorAll("#position");
+
+    fetch(url)
+    .then(function(res) {
+        return res.json();
+    })
+    .then(function(data) {  
+        for (i = 0; i < data.leaderboard.players.length; i++) {
+            for (j = 0; j < data.leaderboard.players.length; j++) {
+                if (playerIds[j] == data.leaderboard.players[i].player_id) {
+                    console.log(data.leaderboard.players[i].total + " " + data.leaderboard.players[i].player_bio.last_name);
+                    scoreDisp[j].innerText = data.leaderboard.players[i].total;
+                    // console.log(playerIds);
+                }
+            }
+        }
+    })
+}
+
+function sort_table(tbody, col, asc) {
+    var rows = tbody.rows,
+        rlen = rows.length,
+        arr = new Array(),
+        i, j, cells, clen;
+    // fill the array with values from the table
+    for (i = 0; i < rlen; i++) {
+        cells = rows[i].cells;
+        clen = cells.length;
+        arr[i] = new Array();
+        for (j = 0; j < clen; j++) {
+            arr[i][j] = cells[j].innerHTML;
+        }
+    }
+    // sort the array by the specified column number (col) and order (asc)
+    arr.sort(function (a, b) {
+        return (a[col] == b[col]) ? 0 : ((a[col] > b[col]) ? asc : -1 * asc);
+    });
+    // replace existing rows with new rows created from the sorted array
+    for (i = 0; i < rlen; i++) {
+        rows[i].innerHTML = "<td>" + arr[i].join("</td><td>") + "</td>";
+    }
+}
