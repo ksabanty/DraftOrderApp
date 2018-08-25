@@ -54,8 +54,16 @@ var people, asc1 = 1, asc2 = 1, asc3 = 1;
 
 window.onload = function() {
     getScores(golfers);
+    getStrokes(golfers);
     people = document.getElementById("people");
+    setTimeout(function(){ defaultSort(); }, 200);
+    setTimeout(function(){ document.getElementById("scoreboard").style.display='block';}, 300);
 };
+
+function defaultSort() {
+    var header = document.getElementById("strokeHeader");
+    header.click();
+}
 
 function getScores(playerIds) {
     var url = "https://statdata.pgatour.com/r/033/leaderboard-v2mini.json";
@@ -71,7 +79,7 @@ function getScores(playerIds) {
         for (i = 0; i < data.leaderboard.players.length; i++) {
             for (j = 0; j < data.leaderboard.players.length; j++) {
                 if (playerIds[j] == data.leaderboard.players[i].player_id) {
-                    console.log(data.leaderboard.players[i].total + " " + data.leaderboard.players[i].player_bio.last_name);
+                    // console.log(data.leaderboard.players[i].total + " " + data.leaderboard.players[i].player_bio.last_name);
                     scoreDisp[j].innerText = data.leaderboard.players[i].total;
                     // console.log(playerIds);
                 }
@@ -80,26 +88,72 @@ function getScores(playerIds) {
     })
 }
 
-function sort_table(tbody, col, asc) {
-    var rows = tbody.rows,
-        rlen = rows.length,
-        arr = new Array(),
-        i, j, cells, clen;
+function getStrokes(playerIds) {
+    var url = "https://statdata.pgatour.com/r/033/leaderboard-v2mini.json";
+    var strokeDisp = document.querySelectorAll(".strokes");
+    var pageGolfers = document.querySelectorAll("#lName");
+    var ranking = document.querySelectorAll("#position");
+
+    fetch(url)
+    .then(function(res) {
+        return res.json();
+    })
+    .then(function(data) {  
+        for (i = 0; i < data.leaderboard.players.length; i++) {
+            for (j = 0; j < data.leaderboard.players.length; j++) {
+                if (playerIds[j] == data.leaderboard.players[i].player_id) {
+                    // console.log(data.leaderboard.players[i].total + " " + data.leaderboard.players[i].player_bio.last_name);
+                    strokeDisp[j].innerText = data.leaderboard.players[i].total_strokes;
+                    // console.log(playerIds);
+                }
+            }
+        }
+    })
+}
+
+
+
+// function sort_table(tbody, col, asc) {
+//     var rows = tbody.rows,
+//         rlen = rows.length,
+//         arr = new Array(),
+//         i, j, cells, clen;
+//     // fill the array with values from the table
+//     for (i = 0; i < rlen; i++) {
+//         cells = rows[i].cells;
+//         clen = cells.length;
+//         arr[i] = new Array();
+//         for (j = 0; j < clen; j++) {
+//             arr[i][j] = cells[j].innerHTML;
+//         }
+//     }
+//     // sort the array by the specified column number (col) and order (asc)
+//     arr.sort(function (a, b) {
+//         return (a[col] == b[col]) ? 0 : ((a[col] > b[col]) ? asc : -1 * asc);
+//     });
+//     // replace existing rows with new rows created from the sorted array
+//     for (i = 0; i < rlen; i++) {
+//         rows[i].innerHTML = "<td>" + arr[i].join("</td><td>") + "</td>";
+//     }
+// }
+
+function sort_table(tbody, col, asc){
+    var rows = tbody.rows, rlen = rows.length, arr = new Array(), i, j, cells, clen;
     // fill the array with values from the table
-    for (i = 0; i < rlen; i++) {
-        cells = rows[i].cells;
-        clen = cells.length;
-        arr[i] = new Array();
-        for (j = 0; j < clen; j++) {
-            arr[i][j] = cells[j].innerHTML;
+    for(i = 0; i < rlen; i++){
+    cells = rows[i].cells;
+    clen = cells.length;
+    arr[i] = new Array();
+        for(j = 0; j < clen; j++){
+        arr[i][j] = cells[j].innerHTML;
         }
     }
     // sort the array by the specified column number (col) and order (asc)
-    arr.sort(function (a, b) {
-        return (a[col] == b[col]) ? 0 : ((a[col] > b[col]) ? asc : -1 * asc);
+    arr.sort(function(a, b){
+        return (a[col] == b[col]) ? 0 : ((a[col] > b[col]) ? asc : -1*asc);
     });
-    // replace existing rows with new rows created from the sorted array
-    for (i = 0; i < rlen; i++) {
-        rows[i].innerHTML = "<td>" + arr[i].join("</td><td>") + "</td>";
+    for(i = 0; i < rlen; i++){
+        arr[i] = "<td>"+arr[i].join("</td><td>")+"</td>";
     }
+    tbody.innerHTML = "<tr>"+arr.join("</tr><tr>")+"</tr>";
 }

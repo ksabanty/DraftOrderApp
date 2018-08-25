@@ -9,9 +9,10 @@
         <title>Draft Order App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
     </head>
     <body>
-        <h1>Draft Order App</h1>
+        <!-- <h1>Draft Order App</h1> -->
 
         <!-- <h3>Enter League Members</h3> -->
         <!-- <input type="text" id="leagueMember"> -->
@@ -30,12 +31,16 @@
             <li>Denis</li>
         </ol> -->
 
-        <table>
+        <table id="scoreboard">
             <thead>
                 <tr>
-                    <th onclick="sort_table(people, 0, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;">League Member</th>
-                    <th onclick="sort_table(people, 1, asc2); asc2 *= -1; asc3 = 1; asc1 = 1;">Golfer</th>
-                    <th onclick="sort_table(people, 2, asc3); asc3 *= -1; asc1 = 1; asc2 = 1;">Score</th>
+                    <th>League Member</th>
+                    <th>Golfer</th>
+                    <th data-autoclick="true" id="strokeHeader" onclick="sort_table(people, 2, asc3); asc3 *= -1; asc1 = 1; asc2 = 1;">Strokes</th>
+                    <th>Score</th>
+                    <!-- <th>League Member</th>
+                    <th>Golfer</th>
+                    <th>Score</th> -->
                 </tr>
             </thead>
             <tbody id="people">
@@ -43,60 +48,70 @@
                 <td>Kerry</td>
                 <td id="lName">Stone</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             <tr>
                 <td>Zach</td>
                 <td id="lName">Simpson</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             <tr>
                 <td>Eric</td>
                 <td id="lName">Berger</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             <tr>
                 <td>Bova</td>
                 <td id="lName">Suri</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             <tr>
                 <td>Leeds</td>
                 <td id="lName">Wallace</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             <tr>
                 <td>Tim</td>
                 <td id="lName">Na</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             <tr>
                 <td>Jon</td>
                 <td id="lName">Koepka</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             <tr>
                 <td>Meg</td>
                 <td id="lName">Lowry</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             <tr>
                 <td>Bre</td>
                 <td id="lName">Woodland</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             <tr>
                 <td>Denis</td>
                 <td id="lName">Hatton</td>
                 <!-- <td id="position"></td> -->
+                <td class="strokes"></td>
                 <td id="score"></td>
             </tr>
             </tbody>
