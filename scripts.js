@@ -21,7 +21,7 @@ function assignGolfer() {
         }
     }
 
-        var url = "https://statdata.pgatour.com/r/033/leaderboard-v2mini.json";
+        var url = "https://statdata.pgatour.com/r/505/leaderboard-v2mini.json";
         XHR.open("GET", url);
         XHR.send();
     })
@@ -48,7 +48,7 @@ function randomizeOrder() {
     }
 }
 
-var golfers = [35225, 29221, 40026, 45478, 48887, 25396, 36689, 33204, 31323, 34363];
+var golfers = [24502,26329,31323,24024,26851,28237,46970,36689,22405,29221];
 
 var people, asc1 = 1, asc2 = 1, asc3 = 1;
 
@@ -66,7 +66,7 @@ function defaultSort() {
 }
 
 function getScores(playerIds) {
-    var url = "https://statdata.pgatour.com/r/033/leaderboard-v2mini.json";
+    var url = "https://statdata.pgatour.com/r/505/leaderboard-v2mini.json";
     var scoreDisp = document.querySelectorAll("#score");
     var pageGolfers = document.querySelectorAll("#lName");
     var ranking = document.querySelectorAll("#position");
@@ -89,7 +89,7 @@ function getScores(playerIds) {
 }
 
 function getStrokes(playerIds) {
-    var url = "https://statdata.pgatour.com/r/033/leaderboard-v2mini.json";
+    var url = "https://statdata.pgatour.com/r/505/leaderboard-v2mini.json";
     var strokeDisp = document.querySelectorAll(".strokes");
     var pageGolfers = document.querySelectorAll("#lName");
     var ranking = document.querySelectorAll("#position");
